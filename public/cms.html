@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREY NEWS - HEADLESS CMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-5xl mx-auto">
+        <header class="flex justify-between items-center mb-8 pb-4 border-b border-red-600/30">
+            <h1 class="trey-logo text-2xl md:text-4xl">TREY CMS</h1>
+            <a href="/" class="glass-btn px-4 py-2 rounded text-sm font-bold uppercase tracking-wider">Back to Live</a>
+        </header>
+
+        <section id="login-section" class="liquid-glass max-w-md mx-auto p-8 rounded-xl mt-20">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">SYSTEM ACCESS</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs text-red-500 font-bold uppercase mb-2 tracking-widest">Access Key (jtwtk)</label>
+                    <input type="password" id="cms-passcode" class="w-full bg-black/50 border border-red-500/50 text-white rounded p-3 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition">
+                </div>
+                <button onclick="login()" class="glass-btn w-full py-3 rounded font-bold uppercase tracking-wider mt-4">Authenticate</button>
+                <p id="login-error" class="text-red-500 text-sm hidden mt-2 text-center"></p>
+            </div>
+        </section>
+
+        <section id="dashboard-section" class="hidden grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="space-y-8 md:col-span-1">
+                <div class="liquid-glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 text-white border-b border-red-500/30 pb-2">Security</h3>
+                    <input type="password" id="new-cms-key" placeholder="New CMS Key" class="w-full bg-black/50 border border-red-500/50 text-white rounded p-2 mb-3 text-sm focus:outline-none focus:border-red-500">
+                    <button onclick="changeKey()" class="glass-btn w-full py-2 rounded text-sm font-bold uppercase">Update Key</button>
+                    <p id="key-msg" class="text-xs mt-2 text-center"></p>
+                </div>
+
+                <button onclick="logout()" class="liquid-glass w-full py-3 rounded text-sm font-bold uppercase text-red-500 border-red-500/50 hover:bg-red-500/10 transition">Terminate Session</button>
+            </div>
+
+            <div class="md:col-span-2 space-y-8">
+                <div class="liquid-glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 text-white border-b border-red-500/30 pb-2">Transmit Article</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="post-title" placeholder="Headline" class="w-full bg-black/50 border border-red-500/50 text-white rounded p-3 focus:outline-none focus:border-red-500">
+                        <textarea id="post-content" placeholder="Article body..." rows="5" class="w-full bg-black/50 border border-red-500/50 text-white rounded p-3 focus:outline-none focus:border-red-500"></textarea>
+                        
+                        <div>
+                            <label class="block text-xs text-red-500 font-bold uppercase mb-2 tracking-widest">Attach Imagery (Local Device)</label>
+                            <input type="file" id="post-image" accept="image/*" class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-bold file:bg-red-600/20 file:text-red-500 hover:file:bg-red-600/40 file:transition cursor-pointer">
+                        </div>
+
+                        <button onclick="createPost()" class="glass-btn w-full py-3 rounded font-bold uppercase tracking-wider mt-4">Publish Data</button>
+                        <p id="publish-msg" class="text-xs mt-2 text-center"></p>
+                    </div>
+                </div>
+
+                <div class="liquid-glass p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 text-white border-b border-red-500/30 pb-2">Database Records</h3>
+                    <div id="cms-posts-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                        </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="cms.js"></script>
+</body>
+</html>
